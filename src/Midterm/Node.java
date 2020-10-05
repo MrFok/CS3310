@@ -6,7 +6,7 @@
 * assignment: Midterm
 * date last modified: 10/9/2020
 *
-* purpose: Implementation of an integer Node for trees
+* purpose: Implementation of a Node for the setup for trees
 ****************************************************************/
 package Midterm;
 
