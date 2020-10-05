@@ -6,7 +6,7 @@
 * assignment: Midterm
 * date last modified: 10/9/2020
 *
-* purpose: Implementation of Tree Sort
+* purpose: Implementation of an integer Tree Sort
 * 		 1. tree sort take elements into an array
 * 		 2. creates binary tree from array values
 * 		 3. Perform in-order traversal on tree to return values in sorted order

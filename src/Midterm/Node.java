@@ -1,3 +1,13 @@
+/***************************************************************
+* file: Node
+* author: Ricky Fok
+* class: CS 3310
+*
+* assignment: Midterm
+* date last modified: 10/9/2020
+*
+* purpose: Implementation of an integer Node for trees
+****************************************************************/
 package Midterm;
 
 public class Node
