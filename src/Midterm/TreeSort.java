@@ -34,33 +34,33 @@ public class TreeSort
 		int i;
 		for(i = 0; i < length; i++)	
 		{
-			root = slot(root, array[i]);
 			numOfOps++;
+			root = slot(root, array[i]);
 		}
-		//System.out.println("Slotted " + i + " times");
 	}
-
 
 	public Node slot(Node root, int value)	//recursive function to insert new value
 	{
+
 		if(root == null)	//if tree is empty, then you return a new Node
 		{
-			//numOfOps++;
+			numOfOps++;
 			root = new Node(value);
 			return root;
 		}
 
+
 		if(value < root.getData())		//if value is less than root value
 		{
+			numOfOps++;
 			root.setLftNode(slot(root.getLftNode(), value));
-			//numOfOps++;
-		}
-		else if(value > root.getData())	//if value is greater than root value
-		{
-			root.setRgtNode(slot(root.getRgtNode(), value));
-			//numOfOps++;
 		}
 		
+		else if(value > root.getData())	//if value is greater than root value
+		{
+			numOfOps++;
+			root.setRgtNode(slot(root.getRgtNode(), value));
+		}
 
 		return root;
 	}
@@ -92,6 +92,11 @@ public class TreeSort
 	public int getNumOfOps()
 	{
 		return numOfOps;
+	}
+	
+	private void printOps()	//for debug
+	{
+		System.out.println("Current Op Count: " + getNumOfOps());
 	}
 
 	public Node getRoot()
