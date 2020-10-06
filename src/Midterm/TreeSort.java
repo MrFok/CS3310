@@ -18,6 +18,7 @@ public class TreeSort
 	private Node root;
 	private int[] array;
 	private int length;
+	private int numOfOps;
 
 	public TreeSort(int[] arr)
 	{
@@ -25,6 +26,7 @@ public class TreeSort
 		length = arr.length;
 		array = new int[this.length];
 		readArr(arr);
+		numOfOps = 0;
 	}
 
 	public void createBTree()	//sets up Binary Tree
@@ -33,8 +35,9 @@ public class TreeSort
 		for(i = 0; i < length; i++)	
 		{
 			root = slot(root, array[i]);
+			numOfOps++;
 		}
-		System.out.println("Slotted " + i + " times");
+		//System.out.println("Slotted " + i + " times");
 	}
 
 
@@ -42,14 +45,22 @@ public class TreeSort
 	{
 		if(root == null)	//if tree is empty, then you return a new Node
 		{
+			//numOfOps++;
 			root = new Node(value);
 			return root;
 		}
 
 		if(value < root.getData())		//if value is less than root value
+		{
 			root.setLftNode(slot(root.getLftNode(), value));
+			//numOfOps++;
+		}
 		else if(value > root.getData())	//if value is greater than root value
+		{
 			root.setRgtNode(slot(root.getRgtNode(), value));
+			//numOfOps++;
+		}
+		
 
 		return root;
 	}
@@ -69,12 +80,18 @@ public class TreeSort
 		for(int i = 0; i < length; i++)	
 		{
 			array[i] = arr[i];
+			//numOfOps++;
 		}
 	}
 
 	public void print()
 	{
 		printSubTree(root);
+	}
+	
+	public int getNumOfOps()
+	{
+		return numOfOps;
 	}
 
 	public Node getRoot()
@@ -85,6 +102,11 @@ public class TreeSort
 	public void setRoot(Node r)
 	{
 		root = r;
+	}
+	
+	public int getLength()
+	{
+		return length;
 	}
 
 }
