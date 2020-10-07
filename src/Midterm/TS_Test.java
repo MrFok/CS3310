@@ -14,12 +14,13 @@ public class TS_Test
 {
 	public static void main(String[] args)
 	{
-		//Testing Tree Sort
-//		int[] valueArr = {8, 3, 5, 7, 11, 14, 13, 2};
-//
-//		TreeSort tree = new TreeSort(valueArr);
-//		tree.createBTree();
-//		tree.print();
+//		Testing Tree Sort
+		int[] valueArr = {8, 3, 5, 7, 11, 14, 13, 2};
+
+		TreeSort tree = new TreeSort(valueArr);
+		tree.createBTree();
+		tree.print();
+		System.out.println();
 		
 		int[] arr1 = new int[16];
 		int[] arr2 = new int[(int)Math.floor(1 + Math.random() * 1000)];
