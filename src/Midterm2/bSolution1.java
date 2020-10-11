@@ -65,7 +65,8 @@ public class bSolution1 extends solution
 			System.out.printf("BS1:Array Length %d: %d and %d make up %d.", length, answers[1], answers[3], answer);
 			System.out.printf("\nTook %d milliseconds\n\n", time);
 		}
-		
+
+		printArray();
 	}
 
 	

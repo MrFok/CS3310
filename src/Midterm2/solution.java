@@ -89,4 +89,29 @@ abstract class solution
 		return length;
 	}
 	
+	public void printArray()
+	{
+		int numPrinted = 0;
+		for(int i = 0; i < length; i++)
+		{
+			if(numPrinted == 10)
+			{
+				System.out.printf("}\n{ %d", values[i]);
+				numPrinted = 1;
+			}
+			else if (numPrinted == 0)
+			{
+				numPrinted++;
+				System.out.printf("{ %d ", values[i]);
+			}
+			else
+			{
+				numPrinted++;
+				System.out.printf("%d ", values[i]);
+			}
+			
+		}
+		System.out.printf("}\n");
+	}
+	
 }

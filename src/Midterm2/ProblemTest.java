@@ -17,9 +17,9 @@ public class ProblemTest
 	public static void main(String[] args)
 	{
 		int[] sortH = new int[100];		//hundreds sorted array
-		int[] sortK = new int[1000];	//thousands sorted array
-		int[] sortHK = new int[100000];	//100k sorted array
-		int[] sortM = new int[1000000];	//1M sorted array
+		int[] sortK = new int[100];	//thousands sorted array
+		int[] sortHK = new int[100];	//100k sorted array
+		int[] sortM = new int[100];	//1M sorted array
 		
 		int theAnswer = ThreadLocalRandom.current().nextInt(-200, 201);
 		

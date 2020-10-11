@@ -66,6 +66,8 @@ public class aSolution1 extends solution
 			System.out.printf("\nTook %d milliseconds\n", time);
 		}
 		
+		printArray();
+		
 	}
 
 	

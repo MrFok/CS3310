@@ -90,7 +90,8 @@ public class aSolution2 extends solution
 			System.out.printf("AS2:Array Length %d: %d and %d make up %d.", length, answers[0], answers[1], answer);
 			System.out.printf("\nTook %d milliseconds\n\n", time);
 		}
-		
+
+		printArray();
 	}
 	
 	public void slotAns(int a, int b)	//indexes
