@@ -48,25 +48,26 @@ public class bSolution1 extends solution
 		time = stopTime - startTime;
 	}
 	
-	public void slotAns(int a, int b)	//indexes
+	public void slotAns(int a, int b)	//places answers into answers array
 	{
 		answers[0] = a;	//index of first answer value	
-		answers[1] = values[a];	//first answer value
-		answers[2] = b;	//index of second answer value	
-		answers[3] = values[b];	//second answer value
+		answers[1] = b;	//index of second answer value	
+
 	}
 	
-	public void printAns()
+	public void printAns()	//prints out array
 	{
 		if(found == false)
 			System.out.printf("BS1: Array Length %d: No results", length);
 		else
 		{
-			System.out.printf("BS1:Array Length %d: %d and %d make up %d.", length, answers[1], answers[3], answer);
-			System.out.printf("\nTook %d milliseconds\n\n", time);
+			System.out.printf("BS1:Array Length %d: %d and %d make up %d.", length, answers[0], answers[1], answer);
+			System.out.printf("\nTook %d milliseconds\n", time);
 		}
-
-		printArray();
+		
+		if(length <= 100)
+			printArray();
+		
 	}
 
 	

@@ -32,8 +32,8 @@ public class aSolution2 extends solution
 		found = false;
 	}
 	
-	public void setvaluesArr()
-	{
+	public void setvaluesArr()	//sets arr where each index represents individual number. 
+	{							//increments value in array if individual number in values array is found
 		int temp = 0;
 		for(int i = 0; i < length; i++)
 		{
@@ -64,7 +64,7 @@ public class aSolution2 extends solution
 					if(valueArr[index] >= 2)
 					{
 						found = true;
-						slotAns(minValue, x);
+						slotAns(minValue, x);	//places answer into answer array
 					}
 				}
 				else if(valueArr[index] >= 1 && valueArr[maxIndex] >= 1)
@@ -81,7 +81,7 @@ public class aSolution2 extends solution
 
 	}
 	
-	public void printAns()
+	public void printAns()	//prints out array
 	{
 		if(found == false)
 			System.out.printf("AS2: Array Length %d: No results", length);
@@ -90,11 +90,12 @@ public class aSolution2 extends solution
 			System.out.printf("AS2:Array Length %d: %d and %d make up %d.", length, answers[0], answers[1], answer);
 			System.out.printf("\nTook %d milliseconds\n\n", time);
 		}
-
-		printArray();
+		
+		if(length <= 100)
+			printArray();
 	}
 	
-	public void slotAns(int a, int b)	//indexes
+	public void slotAns(int a, int b)	//places answers into answers array
 	{
 		answers[0] = a;	//first answer value
 		answers[1] = b;	//2nd answer value

@@ -81,20 +81,21 @@ public class bSolution2 extends solution
 
 	}
 	
-	public void printAns()
+	public void printAns()	//prints out array
 	{
 		if(found == false)
-			System.out.printf("BS2: Array Length %d: No results", length);
+			System.out.printf("AS2: Array Length %d: No results", length);
 		else
 		{
-			System.out.printf("BS2:Array Length %d: %d and %d make up %d.", length, answers[0], answers[1], answer);
+			System.out.printf("AS2:Array Length %d: %d and %d make up %d.", length, answers[0], answers[1], answer);
 			System.out.printf("\nTook %d milliseconds\n\n", time);
 		}
-
-		printArray();
+		
+		if(length <= 100)
+			printArray();
 	}
 	
-	public void slotAns(int a, int b)	//indexes
+	public void slotAns(int a, int b)	//places answers into answers array
 	{
 		answers[0] = a;	//first answer value
 		answers[1] = b;	//2nd answer value
