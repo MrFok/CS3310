@@ -7,18 +7,21 @@ public class PeaksandValleys
 	private int[] arr;
 	private int length;
 	private int[] pvArr;
+	private long time;
 	
 	public PeaksandValleys()	//constructor
 	{
 		length = ThreadLocalRandom.current().nextInt(5, 21);
 		arr = new int[length];
 		pvArr = new int[length];
+		time = 0;
 		
 		fillArray();
 	}
 	
 	public void findPV()
 	{
+		long startTime = System.currentTimeMillis();
 		sort(arr, 0, (arr.length - 1));
 		
 		int max = length - 1;
@@ -39,6 +42,9 @@ public class PeaksandValleys
 				min++;
 			}
 		}
+		
+		long endTime = System.currentTimeMillis();
+		time = endTime - startTime;
 	}
 	
 	
@@ -124,7 +130,7 @@ public class PeaksandValleys
 		{
 			if(numPrinted == 10)
 			{
-				System.out.printf("}\n{ %d", arr[i]);
+				System.out.printf("}\n{ %d ", arr[i]);
 				numPrinted = 1;
 			}
 			else if (numPrinted == 0)
@@ -148,6 +154,7 @@ public class PeaksandValleys
 		printArr(arr);
 		System.out.printf("\nPeaks and Valleys Array:\n");
 		printArr(pvArr);
+		System.out.printf("\nTime for Algorithm: %d milliseconds", time);
 	}
 	
 }
