@@ -32,9 +32,9 @@ public class PeaksandValleys
 			}
 			else
 			{
-				pvArr[i] = arr[min];
+				pvArr[i] = arr[max];
 				i++;
-				pvArr[i] = arr[max];	
+				pvArr[i] = arr[min];	
 				max--;
 				min++;
 			}
