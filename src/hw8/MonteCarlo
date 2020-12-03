@@ -1,0 +1,44 @@
+package hw8;
+
+import java.util.*;
+
+class hw8 {
+
+    private static final Random rnd = new Random();
+
+    public static boolean W[][]=
+            {{false, false, false, false, false, false},
+                    {false, false, true,  true,  true,  false},
+                    {false, true,  false, false, true,  false},
+                    {false, true,  false, false, true,  false},
+                    {false, true,  true,  true,  false, true},
+                    {false, false, false, false, true,  false}};
+    public static int n = 5;
+    public static int m = 3;
+    public static int vcolor[] = {1, 2, 3, 4, 5, 6};
+    public static int promising = 0;
+
+    public static int estimate(){
+        int v[] = vcolor;
+        int numnodes, m1, mprod, t, i;
+        i = 0;
+        numnodes = 1;
+        m1 = 1;
+        mprod = 1;
+        while(m1 != 0){
+            t = m;
+            mprod *= m1;
+            numnodes = numnodes + mprod * t;
+            m1 = promising;
+            if (m1 != 0)
+                v[i] = rnd.nextInt(m1);
+            i++;
+        }
+        return numnodes;
+    }
+
+    public static void main(String[] args){
+        System.out.println( estimate() );
+    }
+
+}

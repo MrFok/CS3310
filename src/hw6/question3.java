@@ -1,78 +1,164 @@
 package hw6;
-// Implement both algorithms for the Binomial Coefficient problem (Algorithms 3.1 and 3.2)
-// on your system and study their performances using different problem instances
-public class question3
-{
-	private static long timeForOp;	//operation counter
+//Java program to implement 
+//traveling salesman problem 
+//using naive approach.
+import java.util.*;
+class question3{
 	
-	public static void main (String[] args)
-	{
-		calculateDC(10,3);
-		calculateDC(100,3);
-		calculateDC(1000,3);
-		calculateDC(2000,3);
-		System.out.println();
-		calculateDP(10,3);
-		calculateDP(100,3);
-		calculateDP(1000,3);
-		calculateDP(2000,3);
-		calculateDP(100000,3);
-		calculateDP(1000000,3);
-	}
-	
-	public static void calculateDC(int a, int b)
-	{
-		timeForOp = 0;
-		long startTime = System.currentTimeMillis();
-		binDC(a, b);
-		long stopTime = System.currentTimeMillis();
-		System.out.printf("Divide & Conquer: %d choose %d took %d milliseconds.\n", a, b, (stopTime - startTime));
-	}
-	
-	public static void calculateDP(int a, int b)
-	{
-		timeForOp = 0;
-		long startTime = System.currentTimeMillis();
-		binDP(a, b);
-		long stopTime = System.currentTimeMillis();
-		System.out.printf("Dynamic Programming: %d choose %d took %d milliseconds.\n", a, b, (stopTime - startTime));
-	}
-	
-	public static int binDC(int n, int k)
-	{
-		if(k == 0 || n == k)
-		{
-			return 1;
-		}
-		else
-			return binDC(n - 1, k - 1) + binDC(n - 1, k);
-	}
-	
-	public static int binDP(int n, int k)
-	{
-		int[][] B = new int[n+1][k+1];
-		
-		for(int i = 0; i <= n; i++)
-		{
-			for(int j = 0; j <= minimum(i,k); j++)
-			{
-				if(j == 0 || j == i)
-					B[i][j] = 1;
-				else
-					B[i][j] = B[i-1][j-1] + B[i-1][j];
-			}
-		}
-		return B[n][k];
-	}
-	
-	private static int minimum(int a, int b)
-	{
-		if(a < b)
-			return a;
-		else if (b < a)
-			return b;
-		else
-			return a;
-	}
+static int V = 4;
 
+//implementation of traveling 
+//Salesman Problem
+static int travllingSalesmanProblem(int graph[][],
+									int s)
+{
+//store all vertex apart 
+//from source vertex
+ArrayList<Integer> vertex =
+			new ArrayList<Integer>();
+
+for (int i = 0; i < V; i++)
+	if (i != s)
+	vertex.add(i);
+
+//store minimum weight 
+//Hamiltonian Cycle.
+int min_path = Integer.MAX_VALUE;
+do
+{
+	// store current Path weight(cost)
+	int current_pathweight = 0;
+
+	// compute current path weight
+	int k = s;
+	
+	for (int i = 0; 
+			i < vertex.size(); i++) 
+	{
+	current_pathweight += 
+			graph[k][vertex.get(i)];
+	k = vertex.get(i);
+	}
+	current_pathweight += graph[k][s];
+
+	// update minimum
+	min_path = Math.min(min_path, 
+						current_pathweight);
+
+} while (findNextPermutation(vertex));
+
+return min_path;
 }
+
+//Function to swap the data 
+//present in the left and right indices 
+public static ArrayList<Integer> swap(
+			ArrayList<Integer> data, 
+			int left, int right) 
+{ 
+//Swap the data 
+int temp = data.get(left); 
+data.set(left, data.get(right)); 
+data.set(right, temp); 
+
+//Return the updated array 
+return data; 
+} 
+
+//Function to reverse the sub-array 
+//starting from left to the right 
+//both inclusive 
+public static ArrayList<Integer> reverse(
+			ArrayList<Integer> data, 
+			int left, int right) 
+{ 
+//Reverse the sub-array 
+while (left < right) 
+{ 
+	int temp = data.get(left); 
+	data.set(left++, 
+			data.get(right)); 
+	data.set(right--, temp); 
+} 
+
+//Return the updated array 
+return data; 
+} 
+
+//Function to find the next permutation 
+//of the given integer array 
+public static boolean findNextPermutation(
+					ArrayList<Integer> data) 
+{ 
+//If the given dataset is empty 
+//or contains only one element 
+//next_permutation is not possible 
+if (data.size() <= 1) 
+	return false; 
+
+int last = data.size() - 2; 
+
+//find the longest non-increasing 
+//suffix and find the pivot 
+while (last >= 0) 
+{ 
+	if (data.get(last) < 
+		data.get(last + 1)) 
+	{ 
+	break; 
+	} 
+	last--; 
+} 
+
+//If there is no increasing pair 
+//there is no higher order permutation 
+if (last < 0) 
+	return false; 
+
+int nextGreater = data.size() - 1; 
+
+//Find the rightmost successor 
+//to the pivot 
+for (int i = data.size() - 1; 
+		i > last; i--) { 
+	if (data.get(i) > 
+		data.get(last)) 
+	{ 
+	nextGreater = i; 
+	break; 
+	} 
+} 
+
+//Swap the successor and 
+//the pivot 
+data = swap(data, 
+			nextGreater, last); 
+
+//Reverse the suffix 
+data = reverse(data, last + 1, 
+				data.size() - 1); 
+
+//Return true as the 
+//next_permutation is done 
+return true; 
+} 
+
+//Driver Code
+public static void main(String args[])
+{
+//matrix representation of graph
+int graph[][] = {{0, 5, 8, 0, 0, 0, 0, 0},	
+				{0, 0, 4, 0, 4, 0, 0, 0},
+				{0, 0, 0, 2, 0, 0, 5, 0},
+				{0, 0, 0, 0, 0, 0, 0, 7},
+				{1, 0, 0, 0, 0, 0, 0, 0},
+				{0, 6, 0, 0, 2, 0, 0, 0},
+				{0, 0, 0, 10, 0, 0, 0, 0},
+				{0, 0, 0, 0, 0, 5, 4, 0}};
+int s = 0;
+System.out.println(
+travllingSalesmanProblem(graph, s));
+}
+}
+
+//This code is contributed by adityapande88
